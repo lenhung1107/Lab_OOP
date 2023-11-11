@@ -21,7 +21,27 @@ public class Cart {
 			// in ra thêm báo số lượng đĩa thêm vào đã đạt giới hạn 
 			else System.out.println("The cart is almost full");
 		}
-	
+		// tham số truyền vào là mảng
+		  public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+		        for (DigitalVideoDisc disc : dvdList) {
+		            addDigitalVideoDisc(disc);
+		        }
+		        System.out.println("DVDs have been added to the cart.");
+		    }
+		    
+		    // tham số truyền vào là tham số tùy ý
+		    public void addDigitalVideoDisc1(DigitalVideoDisc... dvdList) {
+		        for (DigitalVideoDisc disc : dvdList) {
+		            addDigitalVideoDisc(disc);
+		        }
+		        System.out.println("DVDs have been added to the cart.");
+		    }
+		    // với hai tham số truyền vào 
+		    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) 
+		    {
+		    	addDigitalVideoDisc(dvd1);
+		    	addDigitalVideoDisc(dvd2);
+		    }
 	// Xóa 1 dvd khỏi giỏ hàng
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		itemsOderedList.remove(disc);
