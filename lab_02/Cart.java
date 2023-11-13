@@ -55,4 +55,8 @@ public class Cart {
 		}
 		return totalcost;
 	}
+	public void listCart(){
+        for(int i = 0 ; i < qtyOrdered ; i++) System.out.println("id: "+ itemsOderedList.get(i).getId() +
+                " " + itemsOderedList.get(i).getTitle());
+    }
 }
