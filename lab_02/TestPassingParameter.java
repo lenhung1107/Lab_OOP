@@ -16,7 +16,7 @@ public class TestPassingParameter {
 		System.out.println("cinderella dvd title: " + cinderellaDVD.getTitle());
 		
 		// Doi title
-		changeTitle(jungleDVD, cinderellaDVD.getTitle());
+		swapcorrect(jungleDVD, cinderellaDVD);
 		System.out.println("jungle dvd title: " + jungleDVD.getTitle());
 	}
 	
@@ -26,19 +26,20 @@ public class TestPassingParameter {
 		o1 = o2;
 		o2 = tmp;
 	}
-	 //xay dung lai phuong thuc swap dung 
-	public static void swap(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+	// xay dung lai phuong thuc swap dung 
+	public static void swapcorrect(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
 	    String tmpTitle = dvd1.getTitle();
 	    dvd1.setTitle(dvd2.getTitle());
 	    dvd2.setTitle(tmpTitle);
 	}
+}
 
 	
 	// doi title cua DVD
-	public static void changeTitle(DigitalVideoDisc dvd, String title) {
-		String oldTitle = dvd.getTitle();
-		dvd.setTitle(title);
-		dvd = new DigitalVideoDisc(oldTitle);
-	}
-
-}
+//	public static void changeTitle(DigitalVideoDisc dvd, String title) {
+//		String oldTitle = dvd.getTitle();
+//		dvd.setTitle(title);
+//		dvd = new DigitalVideoDisc(oldTitle);
+//	}
+//
+//}
