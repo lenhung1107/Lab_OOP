@@ -55,8 +55,56 @@ public class Cart {
 		}
 		return totalcost;
 	}
+	
+	//in ra cart kèm id 
 	public void listCart(){
         for(int i = 0 ; i < qtyOrdered ; i++) System.out.println("id: "+ itemsOderedList.get(i).getId() +
                 " " + itemsOderedList.get(i).getTitle());
+	}
+	//tìm kiếm cart theo id
+	 public boolean searchid(int id) {
+	        int n = qtyOrdered;
+	        for(int i = 0; i < n; i++) {
+	            if(itemsOderedList.get(i).getId() == id) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+	    // tìm kiếm theo title
+	    public boolean searchtt(String title) {
+	        int n = qtyOrdered;
+	        for(int i = 0; i < n; i++) {
+	            if(itemsOderedList.get(i).getTitle() == title) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+	//in ra thông tin cart theo yêu cầu đề bài
+        public void printCart() {
+            System.out.println("***********************CART***********************");
+            System.out.println("Ordered Items:");
+
+            for (int i = 0; i < qtyOrdered; i++) {
+                DigitalVideoDisc dvd = itemsOderedList.get(i);
+                System.out.printf("%d. DVD - %s - %s - %s - %d minutes: %.2f $\n", i + 1, dvd.getTitle(),
+                        dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost());
+            }
+            float totalCost = totalCost();
+            System.out.printf("Total cost: %.2f $\n",totalCost);
+        }
+            public void print(int num) {
+                System.out.println("***********************CART***********************");
+                System.out.println("Ordered Items:");
+
+               // for (int i = 0; i < qtyOrdered; i++) {
+                    DigitalVideoDisc dvd = itemsOderedList.get(num-1);
+                    System.out.printf(" %s - %s - %s - %d minutes: %.2f $\n", dvd.getTitle(),
+                            dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost());
+                
+            }
+
+            
+           
     }
-}
