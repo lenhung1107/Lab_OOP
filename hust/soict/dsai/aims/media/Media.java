@@ -1,4 +1,5 @@
 package hust.soict.dsai.aims.media;
+
 import java.util.Comparator;
 
 public abstract class Media {
@@ -54,12 +55,29 @@ public abstract class Media {
     }
 
     @Override
-    public boolean equals(Object o) {
-        Media tmp = (Media)o;
-        if(this.getTitle() == tmp.getTitle()) {
+    public boolean equals(Object obj) {
+        // Check if the object is compared to itself
+        if (this == obj) {
             return true;
         }
-        else return false;
+        // Check if the object is null
+        if (obj == null) {
+            return false;
+        }
+        // Check if the object is an instance of Media class
+        if (!(obj instanceof Media)) {
+            return false;
+        }
+        // Cast the object to Media type
+        Media otherMedia = (Media) obj;
+        // Check if the titles are equal
+        if (this.getTitle() == null && otherMedia.getTitle() == null) {
+            return true;
+        } else if (this.getTitle() == null || otherMedia.getTitle() == null) {
+            return false;
+        } else {
+            return this.getTitle().equals(otherMedia.getTitle());
+        }
     }
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
@@ -72,5 +90,4 @@ public abstract class Media {
         System.out.println("Cost : " + cost);
     }
 
-	protected abstract Object getTitle1();
 }

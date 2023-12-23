@@ -50,10 +50,4 @@ public class Book extends Media{
         }
     }
 
-	@Override
-	protected Object getTitle1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

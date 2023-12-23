@@ -46,10 +46,4 @@ public class Disc extends Media {
         super(title, category, cost);
     }
 
-	@Override
-	protected Object getTitle1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

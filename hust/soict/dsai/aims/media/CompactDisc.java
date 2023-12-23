@@ -1,10 +1,13 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.PlayerException;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
-    //Make all these fields as private
-	private String artist;
+    private String artist;
     private ArrayList<Track> tracks;
 
     // Getter method for artist
@@ -22,7 +25,7 @@ public class CompactDisc extends Disc implements Playable {
         // TODO Auto-generated constructor stub
         super();
     }
-   //
+
     public CompactDisc(String artist) {
         super();
         this.artist = artist;
@@ -36,8 +39,6 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     // Methods for tracks
-    
-    //The addTrack() method should check if the input track is already in the list of tracks and inform users
     public void addTrack(Track track) {
         if (!tracks.contains(track)) {
             tracks.add(track);
@@ -46,7 +47,7 @@ public class CompactDisc extends Disc implements Playable {
             System.out.println("Track already exists in the CD.");
         }
     }
- //The removeTrack() method should check if the input track existed in the list of tracks and inform users
+
     public void removeTrack(Track track) {
         if (tracks.contains(track)) {
             tracks.remove(track);
@@ -66,13 +67,26 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     @Override
-    public void play() {
-        System.out.println("Playing CD: " + this.getTitle());
-        System.out.println("CD length: " + this.getLength());
-
-        // Loop through each track and call play() method
-        for (Track track : tracks) {
-            track.play();
+    public void play() throws PlayerException{
+        int size = tracks.size();
+        JPanel layout = new JPanel(new GridLayout(size, 1));
+        if (this.getLength() < 0) {
+            throw new PlayerException("ERROR : CD length is non-positive");
         }
+        for (Track track : tracks) {
+            if (track.getLength() > 0) {
+                // create Label
+                JLabel text = new JLabel("CD - Title : " + track.getTitle() + " Length : " + track.getLength());
+
+                layout.add(text);
+            } else
+                throw new PlayerException("ERROR : Disc length is non-positive");
+        }
+        JDialog dialog = new JDialog();
+        dialog.setSize(300, 200);
+        dialog.add(layout);
+        dialog.setTitle("Play CD");
+        dialog.setVisible(true);
     }
+
 }
